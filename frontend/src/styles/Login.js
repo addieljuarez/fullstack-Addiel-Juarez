@@ -29,6 +29,12 @@ const styles = {
     borderRadius: '4px',
     boxSizing: 'border-box'
   },
+  error: {
+    color: 'red',
+    fontSize: '12px',
+    marginTop: '10px',
+    textAlign: 'center'
+  },
 } 
 
 export default styles;
