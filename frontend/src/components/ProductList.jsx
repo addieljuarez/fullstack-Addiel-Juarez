@@ -11,7 +11,8 @@ export default function ProductList () {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [products, setProducts] = useState([]);
-
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [productForm, setProductForm] = useState({ name: '', price: '', stock: '' });
 
   useEffect(() => {
     fetchProducts();
@@ -50,6 +51,23 @@ export default function ProductList () {
     }
   };
 
+  const handleSaveProduct = async (e) => {
+    e.preventDefault();
+    try {
+      if (editingProduct) {
+        await api.put(`/products/${editingProduct.id}`, productForm);
+      } else {
+        await api.post('/products', productForm);
+      }
+      setEditingProduct(null);
+      setProductForm({ name: '', price: '', stock: '' });
+      fetchProducts();
+    } catch (err) {
+      setError('Error al guardar producto');
+      console.error(err);
+    }
+  };
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -60,6 +78,47 @@ export default function ProductList () {
       </header>
       
       {error && <div style={styles.errorBanner}>{error}</div>}
+
+      <div style={styles.formContainer}>
+        <h3>{editingProduct ? 'Editar Producto' : 'Crear Producto'}</h3>
+        <div style={styles.formGroup}>
+          <input
+            type="text"
+            placeholder="Nombre del producto"
+            value={productForm.name}
+            onChange={(e) => setProductForm({...productForm, name: e.target.value})}
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.formGroup}>
+          <input
+            type="number"
+            placeholder="Precio"
+            value={productForm.price}
+            onChange={(e) => setProductForm({...productForm, price: e.target.value})}
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.formGroup}>
+          <input
+            type="text"
+            placeholder="Descripcion"
+            value={productForm.description}
+            onChange={(e) => setProductForm({...productForm, description: e.target.value})}
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.formButtons}>
+          <button onClick={handleSaveProduct} style={styles.button}>
+            {editingProduct ? 'Actualizar' : 'Crear'}
+          </button>
+          {editingProduct && (
+            <button onClick={() => {}} style={styles.cancelBtn}>
+              Cancelar
+            </button>
+          )}
+        </div>
+      </div>
     
 
       <div style={styles.tableContainer}>
@@ -73,7 +132,7 @@ export default function ProductList () {
                 <th style={styles.th}>ID</th>
                 <th style={styles.th}>Nombre</th>
                 <th style={styles.th}>Precio</th>
-                <th style={styles.th}>Stock</th>
+                <th style={styles.th}>Descripción</th>
                 <th style={styles.th}>Acciones</th>
               </tr>
             </thead>
@@ -83,7 +142,7 @@ export default function ProductList () {
                   <td style={styles.td}>{product.id}</td>
                   <td style={styles.td}>{product.name}</td>
                   <td style={styles.td}>${product.price}</td>
-                  <td style={styles.td}>{product.stock}</td>
+                  <td style={styles.td}>{product.description}</td>
                   <td style={styles.td}>
                     <button onClick={() => {}} style={styles.editBtn}>
                       Editar

@@ -65,6 +65,66 @@ const style = {
     cursor: 'pointer',
     fontSize: '12px'
   },
+  formContainer: {
+    backgroundColor: '#f9f9f9',
+    padding: '20px',
+    borderRadius: '8px',
+    marginBottom: '20px'
+  },
+  formButtons: {
+    display: 'flex',
+    gap: '10px'
+  },
+  cancelBtn: {
+    padding: '10px 20px',
+    backgroundColor: '#6c757d',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    flex: 1
+  },
+  error: {
+    color: 'red',
+    fontSize: '12px',
+    marginTop: '10px',
+    textAlign: 'center'
+  },
+  errorBanner: {
+    backgroundColor: '#f8d7da',
+    color: '#721c24',
+    padding: '10px',
+    borderRadius: '4px',
+    marginBottom: '20px'
+  },
+  hint: {
+    fontSize: '12px',
+    color: '#666',
+    textAlign: 'center',
+    marginTop: '15px'
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    fontSize: '14px',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    boxSizing: 'border-box'
+  },
+  formGroup: {
+    marginBottom: '15px'
+  },
+  button: {
+    width: '100%',
+    padding: '10px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '14px'
+  },
 }
 
 export default style;
