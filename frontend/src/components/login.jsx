@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import styles from '../styles/Login.js';
+import styles from '../styles/Login.style.js';
 
 
-export default  function Login() {
+export default function Login() {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = (e) => {
     console.log('Login attempt:', e);
 
-    // e.preventDefault();
-    // if (loginForm.username === 'admin' && loginForm.password === '1234') {
-    //   setIsAuthenticated(true);
-    //   setCurrentView('products');
-    //   setError('');
-    // } else {
-    //   setError('Usuario o contraseña incorrectos');
-    // }
+    e.preventDefault();
+    if (loginForm.username === 'admin' && loginForm.password === '1234') {
+      // setIsAuthenticated(true);
+      // setCurrentView('products');
+      setError('');
+    } else {
+      setError('Usuario o contraseña incorrectos');
+    }
   };
   return (
     <div style={styles.loginContainer}>
@@ -43,8 +43,7 @@ export default  function Login() {
         <button onClick={handleLogin} style={styles.button}>
           Ingresar
         </button>
-        {/* {error && <p style={styles.error}>{error}</p>} */}
-        <p style={styles.error}> error</p>
+        {error && <p style={styles.error}>{error}</p>}
         <p style={styles.hint}>Usuario: admin | Contraseña: 1234</p>
       </div>
     </div>

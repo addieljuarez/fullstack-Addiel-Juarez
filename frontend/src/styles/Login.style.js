@@ -35,6 +35,16 @@ const styles = {
     marginTop: '10px',
     textAlign: 'center'
   },
+  button: {
+    width: '100%',
+    padding: '10px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '14px'
+  },
 } 
 
 export default styles;
