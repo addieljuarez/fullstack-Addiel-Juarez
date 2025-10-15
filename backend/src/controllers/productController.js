@@ -1,3 +1,4 @@
+const db = require('../config/database')
 class ProductController {
   // clases static para acceder sin una instancia
   static getAllProducts (req, res) {
