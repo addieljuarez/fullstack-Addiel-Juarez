@@ -12,7 +12,7 @@ export default function ProductList () {
   const [error, setError] = useState('');
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [productForm, setProductForm] = useState({ name: '', price: '', stock: '' });
+  const [productForm, setProductForm] = useState({ name: '', price: '', description: '' });
 
   useEffect(() => {
     fetchProducts();
@@ -60,13 +60,29 @@ export default function ProductList () {
         await api.post('/products', productForm);
       }
       setEditingProduct(null);
-      setProductForm({ name: '', price: '', stock: '' });
+      setProductForm({ name: '', price: '', description: '' });
       fetchProducts();
     } catch (err) {
       setError('Error al guardar producto');
       console.error(err);
     }
   };
+
+  const handleEditProduct = (product) => {
+    setEditingProduct(product);
+    setProductForm({
+      name: product.name,
+      price: product.price,
+      description: product.description
+    });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingProduct(null);
+    setProductForm({ name: '', price: '', description: '' });
+  };
+
+
 
   return (
     <div style={styles.container}>
@@ -113,7 +129,7 @@ export default function ProductList () {
             {editingProduct ? 'Actualizar' : 'Crear'}
           </button>
           {editingProduct && (
-            <button onClick={() => {}} style={styles.cancelBtn}>
+            <button onClick={handleCancelEdit} style={styles.cancelBtn}>
               Cancelar
             </button>
           )}
@@ -144,7 +160,7 @@ export default function ProductList () {
                   <td style={styles.td}>${product.price}</td>
                   <td style={styles.td}>{product.description}</td>
                   <td style={styles.td}>
-                    <button onClick={() => {}} style={styles.editBtn}>
+                    <button onClick={() => handleEditProduct(product)} style={styles.editBtn}>
                       Editar
                     </button>
                     <button onClick={() => handleDeleteProduct(product.id)} style={styles.deleteBtn}>
