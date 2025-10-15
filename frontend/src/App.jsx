@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProductsList from './components/ProductList.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx'; 
 
-
-
 function App() {
   return (
     <BrowserRouter>

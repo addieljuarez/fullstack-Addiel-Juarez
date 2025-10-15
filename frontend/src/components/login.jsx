@@ -3,20 +3,25 @@ import styles from '../styles/Login.style.js';
 import { useNavigate } from 'react-router-dom';
 
 
+
 export default function Login() {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
+  const AUTH_USER = import.meta.env.VITE_AUTH_USER || 'admin';
+  const AUTH_PASS = import.meta.env.VITE_AUTH_PASS || '1234';
+
   const handleLogin = (e) => {
     console.log('Login attempt:', e);
 
     e.preventDefault();
-    if (loginForm.username === 'admin' && loginForm.password === '1234') {
+    if (loginForm.username === AUTH_USER && loginForm.password === AUTH_PASS) {
       // setIsAuthenticated(true);
       // setCurrentView('products');
       localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('username', loginForm.username);
       navigate('/products');
       setError('');
     } else {
@@ -49,7 +54,6 @@ export default function Login() {
           Ingresar
         </button>
         {error && <p style={styles.error}>{error}</p>}
-        <p style={styles.hint}>Usuario: admin | Contraseña: 1234</p>
       </div>
     </div>
   );
