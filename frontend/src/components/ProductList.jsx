@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Product.style.js';
-const API_URL = 'http://localhost:3000/products';
+import api from '../services/api.js';
+
 
 
 export default function ProductList () {
@@ -16,11 +17,10 @@ export default function ProductList () {
 
 
   const fetchProducts = async () => {
-    setLoading(true);
-    setError('');
     try {
-      const response = await fetch(API_URL);
-      const data = await response.json();
+      setLoading(true);
+      setError('');
+      const data = await api.get('/products');
       setProducts(data);
     } catch (err) {
       setError('Error al cargar productos');
