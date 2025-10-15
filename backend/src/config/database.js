@@ -1,7 +1,8 @@
+require('dotenv').config()
 const sqlite = require('sqlite3').verbose()
 const path = require('path')
 
-const dbPath = path.resolve(__dirname, '../../databaseProducts.sqlite')
+const dbPath = process.env.DB_PATH || path.resolve(__dirname, '../../databaseProducts.sqlite')
 
 function initDatabase () {
   // creacion de la base de datos si no existe

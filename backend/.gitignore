@@ -46,3 +46,7 @@ jspm_packages/
 
 # sqlite
 databaseProducts.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
