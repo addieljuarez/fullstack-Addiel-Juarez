@@ -38,6 +38,18 @@ export default function ProductList () {
     navigation('/login');
   };
 
+  const handleDeleteProduct = async (id) => {
+    if (window.confirm('¿Estás seguro de eliminar este producto?')) {
+      try {
+        await api.delete(`/products/${id}`);
+        fetchProducts();
+      } catch (err) {
+        setError('Error al eliminar producto');
+        console.error(err);
+      }
+    }
+  };
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -76,7 +88,7 @@ export default function ProductList () {
                     <button onClick={() => {}} style={styles.editBtn}>
                       Editar
                     </button>
-                    <button onClick={() => {}} style={styles.deleteBtn}>
+                    <button onClick={() => handleDeleteProduct(product.id)} style={styles.deleteBtn}>
                       Eliminar
                     </button>
                   </td>

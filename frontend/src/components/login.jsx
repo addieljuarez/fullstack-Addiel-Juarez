@@ -18,8 +18,6 @@ export default function Login() {
 
     e.preventDefault();
     if (loginForm.username === AUTH_USER && loginForm.password === AUTH_PASS) {
-      // setIsAuthenticated(true);
-      // setCurrentView('products');
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('username', loginForm.username);
       navigate('/products');
