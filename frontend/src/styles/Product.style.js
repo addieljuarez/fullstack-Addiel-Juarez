@@ -6,7 +6,7 @@ const style = {
     windows: '100vw',
     height: '100vh',
     width: '100vw',
-    backgroundColor: '#d5cbcbff',
+    backgroundColor: '#ede5e5ff',
   },
   header: {
     display: 'flex',
