@@ -7,7 +7,7 @@ class ProductController {
       if (err) {
         return next(err)
       }
-      res.status(200).json({ products })
+      res.status(200).json([...products])
     })
   }
 
@@ -27,10 +27,7 @@ class ProductController {
       if (err) {
         return next(err)
       }
-      res.status(201).json({
-        message: 'Producto creado',
-        product: { id: result.lastID, ...newProduct }
-      })
+      res.status(201).json(newProduct)
     })
   }
 
