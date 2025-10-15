@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Product.style.js';
 import api from '../services/api.js';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function ProductList () {
 
+  const navigation = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [products, setProducts] = useState([]);
@@ -30,11 +32,17 @@ export default function ProductList () {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('username');
+    navigation('/login');
+  };
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
         <h1>Gestión de Productos</h1>
-        <button onClick={() => {}} style={styles.logoutBtn}>
+        <button onClick={handleLogout} style={styles.logoutBtn}>
           Cerrar Sesión
         </button>
       </header>
