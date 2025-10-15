@@ -1,7 +1,7 @@
-
-// import React, { useState, useEffect } from 'react';
 import Login from './components/Login.jsx';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ProductsList from './components/ProductList.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx'; 
 
 
 
@@ -13,14 +13,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         
         {/* Ruta protegida - Productos */}
-        {/* <Route
+        <Route
           path="/products"
           element={
             <PrivateRoute>
-              <ProductsPage />
+              <ProductsList />
             </PrivateRoute>
           }
-        /> */}
+        />
         
         {/* Redirección por defecto */}
         <Route path="/" element={<Navigate to="/login" />} />

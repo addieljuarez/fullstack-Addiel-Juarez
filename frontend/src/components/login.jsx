@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import styles from '../styles/Login.style.js';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     console.log('Login attempt:', e);
@@ -13,6 +16,8 @@ export default function Login() {
     if (loginForm.username === 'admin' && loginForm.password === '1234') {
       // setIsAuthenticated(true);
       // setCurrentView('products');
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/products');
       setError('');
     } else {
       setError('Usuario o contraseña incorrectos');
