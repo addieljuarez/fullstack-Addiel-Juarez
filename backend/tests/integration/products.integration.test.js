@@ -1,7 +1,7 @@
 /* global describe, it, expect, jest, beforeAll, beforeEach, afterAll */
-const request = require('supertest');
-const app = require('../../src/app');
-const { setupTestDatabase, clearTestDatabase, closeTestDatabase } = require('../setup');
+const request = require('supertest')
+const app = require('../../src/app')
+const { setupTestDatabase, clearTestDatabase, closeTestDatabase } = require('../setup')
 
 // Mock de la base de datos
 jest.mock('../../src/config/database', () => {
