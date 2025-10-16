@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -8,7 +9,10 @@ const errorHandler = require('./middlewares/errorHandler')
 const app = express()
 
 // middlewares
-app.use(cors())
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  credentials: true
+}))
 app.use(express.json())
 app.use(helmet()) // seguridad extra en las headers de la peticion
 
