@@ -92,7 +92,10 @@ frontend/
 ### 4. Explicación del funcionamiento
 * Se desarrollar una pequeña aplicación que permita listar, crear, editar y eliminar productos
 * conectándose a una API en Node.js.
-* el fronend se conecta al backend
+* el fronend se conecta al backend y hace todas la operaciones del crud
+
+![alt text](https://github.com/addieljuarez/fullstack-Addiel-Juarez/blob/develop/frontend/screen1.png)
+![alt text](https://github.com/addieljuarez/fullstack-Addiel-Juarez/blob/develop/frontend/screen2.png)
 
 5. Scripts útiles
 - [x] npm run dev → modo desarrollo
