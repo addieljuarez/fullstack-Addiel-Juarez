@@ -28,6 +28,7 @@ cd backend && npm install && cd .. && cd frontend && npm install
 ### Comando para ejecutar en desarrollo (npm run dev)
 ```bash
 # en el backend 
+# se usa nodemon
 cd backend && npm run dev
 
 # en el frontend 
@@ -38,7 +39,11 @@ cd frontend && npm run dev
 ```bash
 # en el backend esta aplicado esta url base
 ```
-• Descripción de endpoints principales (GET, POST, PUT, DELETE)
+- [x] http://localhost:3000 → aplicado backend
+- [x] http://localhost:5173 → aplicado frontend
+
+
+## Descripción de endpoints principales (GET, POST, PUT, DELETE)
 
 ### GET - Listar productos
 ```bash
@@ -87,6 +92,7 @@ frontend/
 ### 4. Explicación del funcionamiento
 * Se desarrollar una pequeña aplicación que permita listar, crear, editar y eliminar productos
 * conectándose a una API en Node.js.
+* el fronend se conecta al backend
 
 5. Scripts útiles
 - [x] npm run dev → modo desarrollo
