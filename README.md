@@ -1,5 +1,12 @@
 ## fullstack Addiel Juárez
 
+1. Requisitos previos
+• Node.js versión mínima requerida
+• npm o yarn
+
+```
+node --veriv16.20.2
+```
 
 ### GET - Listar productos
 ```bash
